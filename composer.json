@@ -1,7 +1,7 @@
 {
-    "name": "GH_REPO_URL",
+    "name": "dream-encode/max-marine-automatic-order-coupons-for-customer-accounts",
 	"description": "A custom plugin that allows administrators to select coupons to be auto-applied to orders for specific customers.",
-	"homepage": "https://github.com/GH_REPO_URL",
+	"homepage": "https://github.com/dream-encode/max-marine-automatic-order-coupons-for-customer-accounts",
     "license": "proprietary",
 	"authors": [
 		{

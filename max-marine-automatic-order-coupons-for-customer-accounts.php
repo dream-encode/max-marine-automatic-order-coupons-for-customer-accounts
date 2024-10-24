@@ -22,7 +22,7 @@
  * License URI:       http://www.gnu.org/licenses/gpl-2.0.txt
  * Text Domain:       max-marine-automatic-order-coupons-for-customer-accounts
  * Domain Path:       /languages
- * GitHub Plugin URI: https://github.com/GH_REPO_URL
+ * GitHub Plugin URI: https://github.com/dream-encode/max-marine-automatic-order-coupons-for-customer-accounts
  * Primary Branch:    main
  * Release Asset:     true
  */
