@@ -11,8 +11,6 @@
 
 namespace Max_Marine\Automatic_Order_Coupons_For_Customer_Accounts\Core;
 
-use Max_Marine\Automatic_Order_Coupons_For_Customer_Accounts\Core\Upgrade\Max_Marine_Automatic_Order_Coupons_For_Customer_Accounts_Upgrader;
-
 /**
  * Fired during plugin activation.
  *
@@ -33,6 +31,5 @@ class Max_Marine_Automatic_Order_Coupons_For_Customer_Accounts_Activator {
 	 * @return void
 	 */
 	public static function activate() {
-		Max_Marine_Automatic_Order_Coupons_For_Customer_Accounts_Upgrader::install();
 	}
 }

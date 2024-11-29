@@ -186,15 +186,14 @@ function max_marine_automatic_order_coupons_for_customer_accounts_admin_screen_h
  * @return array  Array of coupon codes.
  */
 function max_marine_automatic_order_coupons_for_customer_accounts_get_all_woocommerce_coupons( $args = array() ) {
-    $default_args = array(
-        'limit' => -1,
+	$default_args = array(
+		'post_type' => 'shop_coupon',
+		'limit'     => -1,
 	);
 
 	$args = wp_parse_args( $args, $default_args );
 
-    $posts = get_posts( array_merge( $args, array(
-		'post_type' => 'shop_coupon',
-	) ) );
+	$posts = get_posts( $args );
 
 	$coupons = array();
 
@@ -208,5 +207,5 @@ function max_marine_automatic_order_coupons_for_customer_accounts_get_all_woocom
 		);
 	}
 
-    return $coupons;
+	return $coupons;
 }

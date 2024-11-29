@@ -13,6 +13,7 @@ namespace Max_Marine\Automatic_Order_Coupons_For_Customer_Accounts\Admin;
 
 use WP_Screen;
 use WC_Coupon;
+use WP_User;
 
 /**
  * The admin-specific functionality of the plugin.
@@ -194,8 +195,12 @@ class Max_Marine_Automatic_Order_Coupons_For_Customer_Accounts_Admin {
 	 * @param  WP_User  $user  The user object for the profile being edited.
 	 * @return void
 	 */
-	function edit_user_profile( $user ) {
+	public function edit_user_profile( $user ) {
 		if ( ! current_user_can( 'administrator' ) ) {
+			return;
+		}
+
+		if ( ! $user instanceof WP_User ) {
 			return;
 		}
 
@@ -203,12 +208,10 @@ class Max_Marine_Automatic_Order_Coupons_For_Customer_Accounts_Admin {
 		$industry_customer = get_user_meta( $user->ID, 'mmaocfca_industry_customer', true );
 		$auto_coupons      = get_user_meta( $user->ID, 'mmaocfca_auto_coupons', true );
 
-		ray($auto_coupons);
-
 		$is_industry_customer = '' !== $industry_customer;
 		$has_auto_coupons     = '' !== $auto_coupons;
 
-		$coupon_name = false;
+		$coupon_name = '';
 
 		if ( $has_auto_coupons ) {
 			$coupon = new WC_Coupon( absint( $auto_coupons ) );
@@ -224,7 +227,7 @@ class Max_Marine_Automatic_Order_Coupons_For_Customer_Accounts_Admin {
 		</h3>
 		<table class="form-table">
 			<tr>
-				<th><label for="mmaocfca_industry_customer"><?php _e( 'Industry Customer?', 'max-marine-automatic-order-coupons-for-customer-accounts' ); ?></label></th>
+				<th><label for="mmaocfca_industry_customer"><?php esc_html_e( 'Industry Customer?', 'max-marine-automatic-order-coupons-for-customer-accounts' ); ?></label></th>
 				<td>
 					<input type="checkbox" name="mmaocfca_industry_customer" id="mmaocfca_industry_customer" value="1" <?php checked( $is_industry_customer ); ?> />
 				</td>
@@ -247,6 +250,7 @@ class Max_Marine_Automatic_Order_Coupons_For_Customer_Accounts_Admin {
 				</td>
 			</tr>
 		</table>
+		<?php wp_nonce_field( 'mmaocfca_edit_user', 'mmaocfca_edit_user_nonce' ); ?>
 
 		<?php
 	}
@@ -258,17 +262,19 @@ class Max_Marine_Automatic_Order_Coupons_For_Customer_Accounts_Admin {
 	 * @param  int  $user_id  Current user ID being saved.
 	 * @return void
 	 */
-	function edit_user_profile_update( $user_id ) {
+	public function edit_user_profile_update( $user_id ) {
+		if ( ! isset( $_POST['mmaocfca_edit_user_nonce'] ) || ! wp_verify_nonce( $_POST['mmaocfca_edit_user_nonce'], 'mmaocfca_edit_user' ) ) {
+			die( esc_html__( 'Security check', 'max-marine-automatic-order-coupons-for-customer-accounts' ) );
+		}
+
 		if ( ! current_user_can( 'manage_woocommerce' ) ) {
-			return false;
+			return;
 		}
 
 		$editable_fields = array(
 			'mmaocfca_industry_customer',
 			'mmaocfca_auto_coupons',
 		);
-
-
 
 		foreach ( $editable_fields as $post_key ) {
 			if ( isset( $_POST[ $post_key ] ) ) {

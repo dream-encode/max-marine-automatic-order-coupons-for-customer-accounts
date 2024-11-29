@@ -76,12 +76,9 @@ class Max_Marine_Automatic_Order_Coupons_For_Customer_Accounts {
 		$this->plugin_name = 'max-marine-automatic-order-coupons-for-customer-accounts';
 
 		$this->load_dependencies();
-		$this->define_tables();
 		$this->set_locale();
 		$this->define_admin_hooks();
 		$this->define_public_hooks();
-		$this->define_global_hooks();
-		$this->define_cli_commands();
 	}
 
 	/**
@@ -107,11 +104,6 @@ class Max_Marine_Automatic_Order_Coupons_For_Customer_Accounts {
 		 */
 		require_once MAX_MARINE_AUTOMATIC_ORDER_COUPONS_FOR_CUSTOMER_ACCOUNTS_PLUGIN_PATH . 'includes/abstracts/abstract-wc-logger.php';
 		require_once MAX_MARINE_AUTOMATIC_ORDER_COUPONS_FOR_CUSTOMER_ACCOUNTS_PLUGIN_PATH . 'includes/log/class-max-marine-automatic-order-coupons-for-customer-accounts-wc-logger.php';
-
-		/**
-		 * Upgrader
-		 */
-		require_once MAX_MARINE_AUTOMATIC_ORDER_COUPONS_FOR_CUSTOMER_ACCOUNTS_PLUGIN_PATH . 'includes/upgrade/class-max-marine-automatic-order-coupons-for-customer-accounts-upgrader.php';
 
 		/**
 		 * The class responsible for orchestrating the actions and filters of the
@@ -141,7 +133,6 @@ class Max_Marine_Automatic_Order_Coupons_For_Customer_Accounts {
 		 */
 		require_once MAX_MARINE_AUTOMATIC_ORDER_COUPONS_FOR_CUSTOMER_ACCOUNTS_PLUGIN_PATH . 'public/class-max-marine-automatic-order-coupons-for-customer-accounts-public.php';
 
-
 		$this->loader = new Max_Marine_Automatic_Order_Coupons_For_Customer_Accounts_Loader();
 	}
 
@@ -159,20 +150,6 @@ class Max_Marine_Automatic_Order_Coupons_For_Customer_Accounts {
 		$plugin_i18n = new Max_Marine_Automatic_Order_Coupons_For_Customer_Accounts_I18n();
 
 		$this->loader->add_action( 'plugins_loaded', $plugin_i18n, 'load_plugin_textdomain' );
-	}
-
-	/**
-	 * Define custom databases tables.
-	 *
-	 * @since  1.0.0
-	 * @return void
-	 */
-	public function define_tables() {
-		if ( ! class_exists( 'Max_Marine_Automatic_Order_Coupons_For_Customer_Accounts_Upgrader' ) ) {
-			return;
-		}
-
-		Max_Marine_Automatic_Order_Coupons_For_Customer_Accounts_Upgrader::define_tables();
 	}
 
 	/**
@@ -195,8 +172,8 @@ class Max_Marine_Automatic_Order_Coupons_For_Customer_Accounts {
 		$this->loader->add_action( 'show_user_profile', $plugin_admin, 'edit_user_profile' );
 		$this->loader->add_action( 'edit_user_profile', $plugin_admin, 'edit_user_profile' );
 
-		$this->loader->add_action( 'personal_options_update', $plugin_admin, 'edit_user_profile_update');
-		$this->loader->add_action( 'edit_user_profile_update', $plugin_admin, 'edit_user_profile_update');
+		$this->loader->add_action( 'personal_options_update', $plugin_admin, 'edit_user_profile_update' );
+		$this->loader->add_action( 'edit_user_profile_update', $plugin_admin, 'edit_user_profile_update' );
 	}
 
 	/**
@@ -211,26 +188,6 @@ class Max_Marine_Automatic_Order_Coupons_For_Customer_Accounts {
 		$plugin_public = new Max_Marine_Automatic_Order_Coupons_For_Customer_Accounts_Public();
 
 		$this->loader->add_action( 'woocommerce_before_calculate_totals', $plugin_public, 'woocommerce_before_calculate_totals' );
-	}
-
-	/**
-	 * Register all of the global hooks .
-	 *
-	 * @since  1.0.0
-	 * @access private
-	 * @return void
-	 */
-	private function define_global_hooks() {
-	}
-
-	/**
-	 * Register custom WP_Cli commands.
-	 *
-	 * @since  1.0.0
-	 * @return void
-	 */
-	private function define_cli_commands() {
-
 	}
 
 	/**
