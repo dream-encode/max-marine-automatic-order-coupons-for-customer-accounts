@@ -28,18 +28,6 @@ use WC_Coupon;
  */
 class Max_Marine_Automatic_Order_Coupons_For_Customer_Accounts_Public {
 	/**
-	 * Example function.
-	 *
-	 * @since  1.0.0
-	 * @access public
-	 * @param  string  $param  First function parameter.
-	 * @return string
-	 */
-	public function example_function( $param ) {
-		return $param;
-	}
-
-	/**
 	 * Register plugin settings.
 	 *
 	 * @since  1.0.0
@@ -80,34 +68,26 @@ class Max_Marine_Automatic_Order_Coupons_For_Customer_Accounts_Public {
 	 * @return void
 	 */
 	public function woocommerce_before_calculate_totals() {
-
-		ray('here');
-
+		// Initial checks.
 		if ( is_admin() || ! is_user_logged_in() || did_action( 'woocommerce_before_calculate_totals' ) >= 2 ) {
 			return;
 		}
 
 		$current_user_id = get_current_user_id();
 
-		ray($current_user_id);
-
+		// Check if customer is industry.
 		$industry_customer = get_user_meta( $current_user_id, 'mmaocfca_industry_customer', true );
 
 		if ( ! $industry_customer ) {
 			return;
 		}
 
-		ray($industry_customer);
-
+		// Check if customer has auto coupons attached to account.
 		$auto_coupons = get_user_meta( $current_user_id, 'mmaocfca_auto_coupons', true );
-
-		ray($auto_coupons);
 
 		if ( ! $auto_coupons ) {
 			return;
 		}
-
-		ray($auto_coupons);
 
 		$coupon = new WC_Coupon( $auto_coupons );
 
@@ -117,12 +97,12 @@ class Max_Marine_Automatic_Order_Coupons_For_Customer_Accounts_Public {
 
 		$coupon_code = $coupon->get_code();
 
-		ray($coupon_code);
-
+		// Make sure this coupon isn;t already applied.
 		if ( WC()->cart->has_discount( $coupon_code ) ) {
 			return;
 		}
 
+		// Add the discount to the cart.
 		WC()->cart->add_discount( $coupon_code );
 	}
 }
