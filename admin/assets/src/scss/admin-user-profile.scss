@@ -1,0 +1,33 @@
+.mmaocfca-autocomplete-coupons-list-container {
+	position: relative;
+
+	.mmaocfca-autocomplete-coupons-list {
+		position: absolute;
+		top: 100%;
+		left: 0;
+		max-height: 200px;
+		min-width: 400px;
+		overflow-y: auto;
+		background: #fff;
+		border: 1px solid #ccc;
+		border-radius: 4px;
+		box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+		z-index: 1000;
+		margin-top: 0;
+		padding: 0;
+		list-style: none;
+
+		&.hidden {
+			display: none;
+		}
+
+		.autocomplete-item {
+			padding: 8px 12px;
+			cursor: pointer;
+
+			&:hover {
+				background: #f0f0f0;
+			}
+		}
+	}
+}

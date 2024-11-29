@@ -150,7 +150,14 @@ const admin = {
 	entry: {
 		'admin-settings-page': [
 			'./admin/assets/src/js/admin-settings-page.js',
-			'./admin/assets/src/scss/admin-settings-page.scss'
+			'./admin/assets/src/scss/admin-settings-page.scss',
+		],
+		'admin-users-listing': [
+			'./admin/assets/src/scss/admin-users-listing.scss',
+		],
+		'admin-user-profile': [
+			'./admin/assets/src/scss/admin-user-profile.scss',
+			'./admin/assets/src/js/admin-user-profile.js',
 		],
 	},
 	output: {

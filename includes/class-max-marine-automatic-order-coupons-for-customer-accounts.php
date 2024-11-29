@@ -107,9 +107,12 @@ class Max_Marine_Automatic_Order_Coupons_For_Customer_Accounts {
 		 */
 		require_once MAX_MARINE_AUTOMATIC_ORDER_COUPONS_FOR_CUSTOMER_ACCOUNTS_PLUGIN_PATH . 'includes/abstracts/abstract-wc-logger.php';
 		require_once MAX_MARINE_AUTOMATIC_ORDER_COUPONS_FOR_CUSTOMER_ACCOUNTS_PLUGIN_PATH . 'includes/log/class-max-marine-automatic-order-coupons-for-customer-accounts-wc-logger.php';
-		
-		
-		
+
+		/**
+		 * Upgrader
+		 */
+		require_once MAX_MARINE_AUTOMATIC_ORDER_COUPONS_FOR_CUSTOMER_ACCOUNTS_PLUGIN_PATH . 'includes/upgrade/class-max-marine-automatic-order-coupons-for-customer-accounts-upgrader.php';
+
 		/**
 		 * The class responsible for orchestrating the actions and filters of the
 		 * core plugin.
@@ -137,8 +140,8 @@ class Max_Marine_Automatic_Order_Coupons_For_Customer_Accounts {
 		 * side of the site.
 		 */
 		require_once MAX_MARINE_AUTOMATIC_ORDER_COUPONS_FOR_CUSTOMER_ACCOUNTS_PLUGIN_PATH . 'public/class-max-marine-automatic-order-coupons-for-customer-accounts-public.php';
-		
-		
+
+
 		$this->loader = new Max_Marine_Automatic_Order_Coupons_For_Customer_Accounts_Loader();
 	}
 
@@ -184,6 +187,16 @@ class Max_Marine_Automatic_Order_Coupons_For_Customer_Accounts {
 		$plugin_admin = new Max_Marine_Automatic_Order_Coupons_For_Customer_Accounts_Admin();
 
 		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_styles' );
+		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_scripts' );
+
+		$this->loader->add_filter( 'manage_users_columns', $plugin_admin, 'manage_users_columns' );
+		$this->loader->add_action( 'manage_users_custom_column', $plugin_admin, 'manage_users_custom_column', 10, 3 );
+
+		$this->loader->add_action( 'show_user_profile', $plugin_admin, 'edit_user_profile' );
+		$this->loader->add_action( 'edit_user_profile', $plugin_admin, 'edit_user_profile' );
+
+		$this->loader->add_action( 'personal_options_update', $plugin_admin, 'edit_user_profile_update');
+		$this->loader->add_action( 'edit_user_profile_update', $plugin_admin, 'edit_user_profile_update');
 	}
 
 	/**
@@ -197,9 +210,7 @@ class Max_Marine_Automatic_Order_Coupons_For_Customer_Accounts {
 	private function define_public_hooks() {
 		$plugin_public = new Max_Marine_Automatic_Order_Coupons_For_Customer_Accounts_Public();
 
-		$this->loader->add_action( 'example_function', $plugin_public, 'example_function' );
-		
-		
+		$this->loader->add_action( 'woocommerce_before_calculate_totals', $plugin_public, 'woocommerce_before_calculate_totals' );
 	}
 
 	/**
@@ -219,7 +230,7 @@ class Max_Marine_Automatic_Order_Coupons_For_Customer_Accounts {
 	 * @return void
 	 */
 	private function define_cli_commands() {
-		
+
 	}
 
 	/**

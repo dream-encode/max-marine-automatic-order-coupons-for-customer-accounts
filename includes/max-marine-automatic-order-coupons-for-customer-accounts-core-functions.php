@@ -9,6 +9,8 @@
  * @subpackage Max_Marine_Automatic_Order_Coupons_For_Customer_Accounts/includes
  */
 
+ use WC_Coupon;
+
 /**
  * Define a constant if it is not already defined.
  *
@@ -53,6 +55,24 @@ function max_marine_automatic_order_coupons_for_customer_accounts_get_plugin_set
  */
 function max_marine_automatic_order_coupons_for_customer_accounts_get_admin_screens_to_assets() {
 	return array(
+		'users' => array(
+			array(
+				'name' => 'users-listing',
+			),
+		),
+		'user-edit' => array(
+			array(
+				'name'         => 'user-profile',
+				'localization' => array(
+					'REST_URL'    => get_rest_url( null, '' ),
+					'WP_REST_URL' => get_rest_url(),
+					'NONCES'      => array(
+						'REST' => wp_create_nonce( 'wp_rest' ),
+					),
+					'ALL_COUPONS'    => max_marine_automatic_order_coupons_for_customer_accounts_get_all_woocommerce_coupons(),
+				),
+			),
+		),
 		'settings_page_max-marine-automatic-order-coupons-for-customer-accounts-settings' => array(
 			array(
 				'name'         => 'settings-page',
@@ -156,4 +176,37 @@ function max_marine_automatic_order_coupons_for_customer_accounts_admin_screen_e
  */
 function max_marine_automatic_order_coupons_for_customer_accounts_admin_screen_has_enqueued_assets( $screen ) {
 	return count( max_marine_automatic_order_coupons_for_customer_accounts_admin_screen_enqueued_assets( $screen ) );
+}
+
+/**
+ * Fetch WooCommerce coupons for autocomplete suggestions.
+ *
+ * @since  1.0.0
+ * @param  array  $args  Array of args to filter coupons query.
+ * @return array  Array of coupon codes.
+ */
+function max_marine_automatic_order_coupons_for_customer_accounts_get_all_woocommerce_coupons( $args = array() ) {
+    $default_args = array(
+        'limit' => -1,
+	);
+
+	$args = wp_parse_args( $args, $default_args );
+
+    $posts = get_posts( array_merge( $args, array(
+		'post_type' => 'shop_coupon',
+	) ) );
+
+	$coupons = array();
+
+	foreach ( $posts as $post ) {
+		$coupon = new WC_Coupon( $post->ID );
+
+		$coupons[] = array(
+			'id'   => $coupon->get_id(),
+			'name' => $coupon->get_description(),
+			'code' => $coupon->get_code(),
+		);
+	}
+
+    return $coupons;
 }
