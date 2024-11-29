@@ -153,6 +153,7 @@ const admin = {
 			'./admin/assets/src/scss/admin-settings-page.scss',
 		],
 		'admin-users-listing': [
+			'./admin/assets/src/js/admin-users-listing.js',
 			'./admin/assets/src/scss/admin-users-listing.scss',
 		],
 		'admin-user-profile': [
