@@ -9,8 +9,6 @@
  * @subpackage Max_Marine_Automatic_Order_Coupons_For_Customer_Accounts/includes
  */
 
- use WC_Coupon;
-
 /**
  * Define a constant if it is not already defined.
  *
