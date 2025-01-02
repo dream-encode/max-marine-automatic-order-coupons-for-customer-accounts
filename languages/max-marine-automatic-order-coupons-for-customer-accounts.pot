@@ -1,0 +1,112 @@
+# Copyright (C) 2025 David Baumwald
+# This file is distributed under the GPL-2.0+.
+msgid ""
+msgstr ""
+"Project-Id-Version: Max Marine - Automatic Order Coupons For Customer Accounts 1.0.0\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/max-marine-automatic-order-coupons-for-customer-accounts\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2025-01-02T14:23:56+00:00\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"X-Generator: WP-CLI 2.12.0-alpha-4d74dc1\n"
+"X-Domain: max-marine-automatic-order-coupons-for-customer-accounts\n"
+
+#. Plugin Name of the plugin
+#: max-marine-automatic-order-coupons-for-customer-accounts.php
+#: admin/assets/src/js/components/AdminSettings/AdminSettingsPage.jsx:55
+msgid "Max Marine - Automatic Order Coupons For Customer Accounts"
+msgstr ""
+
+#. Plugin URI of the plugin
+#: max-marine-automatic-order-coupons-for-customer-accounts.php
+msgid "https://example.com"
+msgstr ""
+
+#. Description of the plugin
+#: max-marine-automatic-order-coupons-for-customer-accounts.php
+msgid "A custom plugin that allows administrators to select coupons to be auto-applied to orders for specific customers."
+msgstr ""
+
+#. Author of the plugin
+#: max-marine-automatic-order-coupons-for-customer-accounts.php
+msgid "David Baumwald"
+msgstr ""
+
+#. Author URI of the plugin
+#: max-marine-automatic-order-coupons-for-customer-accounts.php
+msgid "https://dream-encode.com"
+msgstr ""
+
+#: admin/class-max-marine-automatic-order-coupons-for-customer-accounts-admin.php:129
+#: admin/class-max-marine-automatic-order-coupons-for-customer-accounts-admin.php:130
+msgid "Automatic Order Coupons For Customer Accounts"
+msgstr ""
+
+#: admin/class-max-marine-automatic-order-coupons-for-customer-accounts-admin.php:161
+msgid "Industry?"
+msgstr ""
+
+#: admin/class-max-marine-automatic-order-coupons-for-customer-accounts-admin.php:185
+msgid "No"
+msgstr ""
+
+#: admin/class-max-marine-automatic-order-coupons-for-customer-accounts-admin.php:187
+msgid "Yes"
+msgstr ""
+
+#: admin/class-max-marine-automatic-order-coupons-for-customer-accounts-admin.php:226
+msgid "Customer Auto Order Coupons"
+msgstr ""
+
+#: admin/class-max-marine-automatic-order-coupons-for-customer-accounts-admin.php:230
+msgid "Industry Customer?"
+msgstr ""
+
+#: admin/class-max-marine-automatic-order-coupons-for-customer-accounts-admin.php:236
+msgid "Apply coupon automatically"
+msgstr ""
+
+#: admin/class-max-marine-automatic-order-coupons-for-customer-accounts-admin.php:242
+msgid "Coupon"
+msgstr ""
+
+#: admin/class-max-marine-automatic-order-coupons-for-customer-accounts-admin.php:249
+msgid "Start typing to search for a coupon code."
+msgstr ""
+
+#: admin/class-max-marine-automatic-order-coupons-for-customer-accounts-admin.php:267
+msgid "Security check"
+msgstr ""
+
+#. translators: 1: WC_Logger class name, 2: `log` method name.`.
+#: includes/abstracts/abstract-wc-logger.php:92
+msgid "%1$s->%2$s depends on `wc_get_logger` which is bundled with the WooCommerce plugin."
+msgstr ""
+
+#: admin/assets/src/js/components/AdminSettings/AdminSettingsPage.jsx:45
+msgid "Settings saved."
+msgstr ""
+
+#: admin/assets/src/js/components/AdminSettings/AdminSettingsPage.jsx:69
+msgid "General"
+msgstr ""
+
+#: admin/assets/src/js/components/AdminSettings/AdminSettingsPage.jsx:72
+msgid "Log Level"
+msgstr ""
+
+#: admin/assets/src/js/components/AdminSettings/AdminSettingsPage.jsx:91
+msgid "Save"
+msgstr ""
+
+#: admin/assets/src/js/components/Common/CopyToClipboard.jsx:31
+msgid "Copied!"
+msgstr ""
+
+#: admin/assets/src/js/utils/helpers.js:115
+#: admin/assets/src/js/utils/helpers.js:137
+msgid "N/A"
+msgstr ""
