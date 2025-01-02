@@ -149,7 +149,7 @@ class Max_Marine_Automatic_Order_Coupons_For_Customer_Accounts {
 	private function set_locale() {
 		$plugin_i18n = new Max_Marine_Automatic_Order_Coupons_For_Customer_Accounts_I18n();
 
-		$this->loader->add_action( 'plugins_loaded', $plugin_i18n, 'load_plugin_textdomain' );
+		$this->loader->add_action( 'init', $plugin_i18n, 'load_plugin_textdomain' );
 	}
 
 	/**
