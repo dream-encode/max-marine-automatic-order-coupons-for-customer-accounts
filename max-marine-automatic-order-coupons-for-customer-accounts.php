@@ -15,7 +15,7 @@
  * Plugin Name:       Max Marine - Automatic Order Coupons For Customer Accounts
  * Plugin URI:        https://example.com
  * Description:       A custom plugin that allows administrators to select coupons to be auto-applied to orders for specific customers.
- * Version:           1.0.1
+ * Version:           1.0.2
  * Author:            David Baumwald
  * Author URI:        https://dream-encode.com
  * License:           GPL-2.0+

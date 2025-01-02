@@ -1,6 +1,6 @@
 {
   "name": "max-marine-automatic-order-coupons-for-customer-accounts",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "A custom plugin that allows administrators to select coupons to be auto-applied to orders for specific customers.",
   "author": "David Baumwald<david@dream-encode.com>",
   "license": "ISC",
