@@ -196,7 +196,7 @@ class Max_Marine_Automatic_Order_Coupons_For_Customer_Accounts_Admin {
 	 * @return void
 	 */
 	public function edit_user_profile( $user ) {
-		if ( ! current_user_can( 'administrator' ) ) {
+		if ( ! current_user_can( 'manage_woocommerce' ) ) {
 			return;
 		}
 
